@@ -1,0 +1,21 @@
+# m0ar tools for a friendlier dev env
+bzip2
+coreutils
+cosign
+crane
+diffutils
+dive
+findutils
+gh
+gnupg
+gnupg-gpgconf
+gpg
+less
+man-db
+posix-libc-utils
+sudo
+syft
+unzip
+vim
+wget
+zip

@@ -1,0 +1,18 @@
+FROM ghcr.io/wolfi-dev/sdk:latest
+# Thanks to Nuno do Carmo for the initial prototype
+# ... and https://github.com/ublue-os/toolboxes/tree/main/toolboxes/wolfi-toolbox
+# ... and https://github.com/wolfi-dev/tools/tree/main/images/sdk
+
+LABEL com.github.containers.toolbox="true" \
+      usage="This image is meant to be used with the Toolbox or Distrobox command" \
+      summary="A Wolfi distrobox, suitable for dev/testing wolfi packages" \
+      maintainer="kevin.monroe@chainguard.dev"
+
+# Copy the setup scripts and package list
+COPY ../scripts/wolfi-sdk.sh /
+COPY ../scripts/distrobox-shims.sh /
+COPY ../packages/wolfi-sdk.packages /
+
+# Run the setup scripts
+RUN chmod +x wolfi-sdk.sh distrobox-shims.sh && /wolfi-sdk.sh
+RUN rm /wolfi-sdk.sh /distrobox-shims.sh /wolfi-sdk.packages
